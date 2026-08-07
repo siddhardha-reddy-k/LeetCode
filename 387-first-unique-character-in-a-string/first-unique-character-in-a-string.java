@@ -1,17 +1,16 @@
 class Solution {
     public int firstUniqChar(String s) {
+        int[] freq = new int[26];
 
-        outerLoop:
         for(int i = 0; i<s.length(); i++){
-            
-            for(int j = 0; j<s.length(); j++){
-                if(s.charAt(i) == s.charAt(j) && i != j){
-                    continue outerLoop;
-                }
+            freq[s.charAt(i) - 'a']++;
+        }
+
+        for(int i = 0; i<s.length(); i++){
+            if(freq[s.charAt(i) - 'a'] == 1) {
+                return i;
             }
-            return i;
         }
         return -1;
-        
     }
 }
