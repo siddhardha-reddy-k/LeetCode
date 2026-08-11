@@ -4,13 +4,10 @@ class Solution {
         Map<String, List<String>> map = new HashMap<>();
 
         for(String str : strs) {
-            int[] charFreq = new int[26];
-
-            for(char c : str.toCharArray()) {
-                charFreq[ c - 'a']++;
-            }
-            String charFreqString = Arrays.toString(charFreq);
-            map.computeIfAbsent(charFreqString, k -> new ArrayList<>()).add(str);
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars); 
+            String charString = new String(chars);
+            map.computeIfAbsent(charString, k -> new ArrayList<>()).add(str);
 
         }
         
